@@ -3,10 +3,10 @@ var sql = require('./db.js');
 
 //Task object constructor
 var Client = function (client) {
-    this.client = client.first_name;
-    this.client = client.last_name;
-    this.client = client.phone_number;
-    this.client = client.email;
+    this.first_name = client.first_name;
+    this.last_name = client.last_name;
+    this.phone_number = client.phone_number;
+    this.email = client.email;
 };
 Client.createClient = function (newClient, result) {
     sql.query("INSERT INTO client set ?", newClient, function (err, res) {
@@ -38,9 +38,20 @@ Client.getAllClients = function (result) {
             console.log("error: ", err);
             result(null, err);
         } else {
-            console.log('tasks : ', res);
+            console.log('Clients : ', res);
 
             result(null, res);
+        }
+    });
+};
+Client.updateClient = function (clientId, client, result) {
+    sql.query("UPDATE client SET ? WHERE id = ?", [client, clientId], function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        } else {
+            console.log(res.insertId);
+            result(null, res.insertId);
         }
     });
 };

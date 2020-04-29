@@ -1,14 +1,24 @@
 'use strict';
 module.exports = function (app) {
     console.log("appRoutes.js file start");
-    var client = require('../controller/appController');
+    var restMethod = require('../controller/appController');
 
     // todoList Routes
     app.route('/clients')
-        .get(client.list_all_clients)
-        .post(client.createClient);
+        .get(restMethod.list_all_clients)
+        .post(restMethod.createClient);
 
     app.route('/clients/:clientId')
-        .get(client.read_a_client)
-        .delete(client.delete_a_client);
+        .get(restMethod.read_a_client)
+        .put(restMethod.update_a_client)
+        .delete(restMethod.delete_a_client);
+
+    app.route('/reservations')
+        .get(restMethod.list_all_reservations)
+        .post(restMethod.createReservation);
+
+    app.route('/reservations/:reservationId')
+        .get(restMethod.read_a_reservation)
+        .put(restMethod.update_a_reservation)
+        .delete(restMethod.delete_a_reservation);
 };
