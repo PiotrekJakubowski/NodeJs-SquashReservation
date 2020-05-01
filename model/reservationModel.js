@@ -20,6 +20,18 @@ Reservation.createReservation = function (newReservation, result) {
         }
     });
 };
+
+Reservation.getAllReservationsForClient = function (clientId, result) {
+    sql.query("Select * from reservation where client_id = ?", clientId, function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
 Reservation.getReservationById = function (reservationId, result) {
     sql.query("Select * from reservation where id = ? ", reservationId, function (err, res) {
         if (err) {
@@ -27,7 +39,6 @@ Reservation.getReservationById = function (reservationId, result) {
             result(err, null);
         } else {
             result(null, res);
-
         }
     });
 };
@@ -54,8 +65,21 @@ Reservation.updateReservation = function (reservationId, reservation, result) {
         }
     });
 };
+
+Reservation.getClientIdForReservation = function (reservationId, result) {
+    sql.query("Select * from reservation WHERE id = ?", reservationId, function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+        } else {
+            console.log("getClientIdForReservation: " + res);
+            result(null, res);
+        }
+    });
+};
+
 Reservation.remove = function (reservationId, result) {
-    sql.query("DELETE FROM reservation WHERE id = ?", [reservationId], function (err, res) {
+    sql.query("DELETE FROM reservation WHERE id = ?", reservationId, function (err, res) {
 
         if (err) {
             console.log("error: ", err);

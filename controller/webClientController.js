@@ -1,5 +1,5 @@
 'use strict';
-console.log("webController.js file start");
+console.log("webClientController.js file start");
 
 var Client = require('../model/clientModel.js');
 

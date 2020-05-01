@@ -1,20 +1,37 @@
 'use strict';
 module.exports = function (app) {
     console.log("webRoutes.js file start");
-    var webMethod = require('../controller/webController');
+    var webClientMethod = require('../controller/webClientController');
+    var webReservationMethod = require('../controller/webReservationController');
 
-    // todoList Routes
+    //Client Methods
     app.route('/web/clients')
-        .get(webMethod.list_clients);
+        .get(webClientMethod.list_clients);
 
     app.route('/web/addClient')
-        .get(webMethod.add_client_page)
-        .post(webMethod.add_client);
+        .get(webClientMethod.add_client_page)
+        .post(webClientMethod.add_client);
 
     app.route('/web/deleteClient/:clientId')
-        .get(webMethod.delete_client);
+        .get(webClientMethod.delete_client);
     
     app.route('/web/editClient/:clientId')
-        .get(webMethod.edit_client_page)
-        .post(webMethod.edit_client);
+        .get(webClientMethod.edit_client_page)
+        .post(webClientMethod.edit_client);
+
+    //Reservation Methods
+    app.route('/web/clientReservations/:clientId')
+        .get(webReservationMethod.list_reservations_for_client);
+
+    app.route('/web/editReservation/:reservationId')
+        .get(webReservationMethod.edit_reservation_page)
+        .post(webReservationMethod.edit_reservation);
+
+    app.route('/web/addReservation/:clientId')
+        .get(webReservationMethod.add_reservation_page)
+        .post(webReservationMethod.add_reservation);
+
+    app.route('/web/deleteReservation/:reservationId')
+        .get(webReservationMethod.delete_reservation);
+
 };

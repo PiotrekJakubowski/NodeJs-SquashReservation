@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+  <body>
+    <div class="container">
+      <h3>Add New Reservation</h3>
+      <form method="post" action="">
+        <input type="text" name="court" placeholder="Court" required/>
+        <input type="text" name="reservation_date" placeholder="Reservation Date" required/>
+        <input type="text" name="client_id" value="<%= clientId %>" readonly/>
+        <input type="submit" value="Add Reservation">
+      </form>
+      <hr>
+      <a href="/web/clients">Go Back To Clients List</a>
+    </div>
+  </body>
+</html>
