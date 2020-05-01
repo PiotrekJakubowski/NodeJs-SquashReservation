@@ -6,4 +6,15 @@ module.exports = function (app) {
     // todoList Routes
     app.route('/web/clients')
         .get(webMethod.list_clients);
+
+    app.route('/web/addClient')
+        .get(webMethod.add_client_page)
+        .post(webMethod.add_client);
+
+    app.route('/web/deleteClient/:clientId')
+        .get(webMethod.delete_client);
+    
+    app.route('/web/editClient/:clientId')
+        .get(webMethod.edit_client_page)
+        .post(webMethod.edit_client);
 };

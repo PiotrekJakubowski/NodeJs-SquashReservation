@@ -21,31 +21,40 @@ Client.createClient = function (newClient, result) {
     });
 };
 Client.getClientById = function (clientId, result) {
-    sql.query("Select * from client where id = ? ", clientId, function (err, res) {
+    console.log("Get Client By Id: " + clientId);
+    let getClientQuery = "Select * from client where id = '" + clientId + "'"
+    sql.query(getClientQuery, function (err, res) {
         if (err) {
             console.log("error: ", err);
-            result(err, null);
+            result(null, err);
         } else {
+            console.log('getClientById results : ', res);
             result(null, res);
-
         }
     });
 };
 Client.getAllClients = function (result) {
     sql.query("Select * from client", function (err, res) {
-
         if (err) {
             console.log("error: ", err);
             result(null, err);
         } else {
-            console.log('Clients : ', res);
-
+            console.log('getAllClients results : ', res);
             result(null, res);
         }
     });
 };
 Client.updateClient = function (clientId, client, result) {
-    sql.query("UPDATE client SET ? WHERE id = ?", [client, clientId], function (err, res) {
+    let first_name = client.first_name;
+    let last_name = client.last_name;
+    let phone_number = client.phone_number;
+    let email = client.email;
+
+    let updateQuery = "UPDATE client SET first_name= '" + first_name + "', last_name= '" + last_name
+                        +"', phone_number= " + phone_number + ", email= '" + email + "' WHERE id= " + clientId;
+
+    console.log("Query: " + updateQuery);
+    sql.query(updateQuery, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);

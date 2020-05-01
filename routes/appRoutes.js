@@ -4,20 +4,20 @@ module.exports = function (app) {
     var restMethod = require('../controller/appController');
 
     // todoList Routes
-    app.route('/clients')
+    app.route('/api/clients')
         .get(restMethod.list_all_clients)
         .post(restMethod.createClient);
 
-    app.route('/clients/:clientId')
+    app.route('/api/clients/:clientId')
         .get(restMethod.read_a_client)
         .put(restMethod.update_a_client)
         .delete(restMethod.delete_a_client);
 
-    app.route('/reservations')
+    app.route('/api/reservations')
         .get(restMethod.list_all_reservations)
         .post(restMethod.createReservation);
 
-    app.route('/reservations/:reservationId')
+    app.route('/api/reservations/:reservationId')
         .get(restMethod.read_a_reservation)
         .put(restMethod.update_a_reservation)
         .delete(restMethod.delete_a_reservation);

@@ -32,10 +32,7 @@ exports.createClient = function (req, res) {
     } else {
 
         Client.createClient(client, function (err, client) {
-
-            if (err)
-                res.send(err);
-            res.json(client);
+            res.redirect('/web/clients');
         });
     }
 };
@@ -46,7 +43,7 @@ exports.update_a_client = function (req, res) {
     Client.updateClient(req.params.clientId, client, function (err, client) {
         if (err)
             res.send(err);
-        res.json(Client);
+        res.json(client);
     });
 };
 
@@ -54,7 +51,7 @@ exports.read_a_client = function (req, res) {
     Client.getClientById(req.params.clientId, function (err, client) {
         if (err)
             res.send(err);
-        res.json(Client);
+        res.json(client);
     });
 };
 
