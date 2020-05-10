@@ -2,6 +2,7 @@
 console.log("webCourtController.js file start");
 
 var Court = require('../../model/courtModel');
+var Reservation = require('../../model/reservationModel');
 
 exports.list_courts = function (req, res) {
     Court.getAllCourts(function (err, court) {
@@ -59,7 +60,15 @@ exports.add_court = function (req, res) {
 
 exports.delete_court = function (req, res) {
 
-    var courtId = req.params.courtId;
+    let courtId = req.params.courtId;
+
+    Reservation.removeAllReservationsForCourt(courtId, function (err, results) {
+        if (err)
+            console.log("We couldn't delete reservations for court: " + courtId);
+        else
+            console.log("Reservations for court: " + courtId + " removed");
+    });
+
     console.log("WebController - Delete court with Id: " + courtId);
     Court.remove(courtId, function (err, result) {
         res.redirect('/web/courts');

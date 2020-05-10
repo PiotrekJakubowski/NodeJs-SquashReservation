@@ -101,4 +101,30 @@ Reservation.remove = function (reservationId, result) {
     });
 };
 
+Reservation.removeAllReservationsForCourt = function (courtId, result) {
+
+    sql.query("DELETE FROM reservation WHERE court_id = ?", courtId, function (err, res) {
+
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+}
+
+Reservation.removeAllReservationsForClient = function (clientId, result) {
+
+    sql.query("DELETE FROM reservation WHERE client_id = ?", clientId, function (err, res) {
+
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+}
+
 module.exports = Reservation;

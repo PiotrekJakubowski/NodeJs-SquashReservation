@@ -31,7 +31,7 @@
               <td>
                 <a href="/web/editCourt/<%= court.courtid %>"> Edit </a>
                 |
-                <a href="/web/deleteCourt/<%= court.courtid %>" onclick="return confirm('Are you sure you want to delete the court?');"> Delete </a>
+                <a href="/web/deleteCourt/<%= court.courtid %>" onclick="return confirm('Are you sure? This operation will remove all reservations for this court.');"> Delete </a>
               </td>
             </tr>
             <% }) %>
