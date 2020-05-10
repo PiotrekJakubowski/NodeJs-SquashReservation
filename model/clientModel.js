@@ -1,7 +1,6 @@
 'user strict';
 var sql = require('./db.js');
 
-//Task object constructor
 var Client = function (client) {
     this.first_name = client.first_name;
     this.last_name = client.last_name;

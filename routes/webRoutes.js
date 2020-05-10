@@ -1,8 +1,9 @@
 'use strict';
 module.exports = function (app) {
     console.log("webRoutes.js file start");
-    var webClientMethod = require('../controller/webClientController');
-    var webReservationMethod = require('../controller/webReservationController');
+    var webClientMethod = require('../controller/WebControllers/webClientController');
+    var webReservationMethod = require('../controller/WebControllers/webReservationController');
+    var webCourtMethod = require('../controller/WebControllers/webCourtController');
 
     //Client Methods
     app.route('/web/clients')
@@ -14,7 +15,7 @@ module.exports = function (app) {
 
     app.route('/web/deleteClient/:clientId')
         .get(webClientMethod.delete_client);
-    
+
     app.route('/web/editClient/:clientId')
         .get(webClientMethod.edit_client_page)
         .post(webClientMethod.edit_client);
@@ -34,4 +35,18 @@ module.exports = function (app) {
     app.route('/web/deleteReservation/:reservationId')
         .get(webReservationMethod.delete_reservation);
 
+    //Court Methods
+    app.route('/web/courts')
+        .get(webCourtMethod.list_courts);
+
+    app.route('/web/editCourt/:courtId')
+        .get(webCourtMethod.edit_court_page)
+        .post(webCourtMethod.edit_court);
+
+    app.route('/web/addCourt')
+        .get(webCourtMethod.add_court_page)
+        .post(webCourtMethod.add_court);
+
+    app.route('/web/deleteCourt/:courtId')
+        .get(webCourtMethod.delete_court);
 };

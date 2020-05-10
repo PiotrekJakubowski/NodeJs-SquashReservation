@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> </head>
+  
+  <head>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+  </head>
+
   <body>
     <div class="page-wrapper">
       <div class="table-wrapper">
@@ -12,13 +20,14 @@
               <th scope="col">Court</th>
               <th scope="col">Date</th>
               <th scope="col">Client ID</th>
+              <th scope="col">Reservation Actions</th>
             </tr>
           </thead>
           <tbody>
             <% reservation.forEach((reservation, index) => { %>
             <tr>
               <th scope="row"><%= reservation.id %></th>
-              <td><%= reservation.court %></td>
+              <td><%= reservation.court_id %></td>
               <td><%= reservation.reservation_date %></td>
               <td><%= reservation.client_id %></td>
               <td>
@@ -36,7 +45,7 @@
         <% } %>
       </div>
       <hr>
-      <a class="float-right" href="/web/addReservation/<%= reservation[0].id %>" title="Add a New Reservation">Add Reservation</a>
+      <a class="float-right" href="/web/addReservation/<%= clientId %>" title="Add a New Reservation">Add Reservation</a>
       <hr>
       <a href="/web/clients">Go Back To Clients List</a>
     </div>

@@ -5,9 +5,13 @@
     <% if (client) { %> 
     <form method="post" action="">
         <input type="text" name="first_name" value="<%= client.first_name %>" required/>
+        <br>
         <input type="text" name="last_name" value="<%= client.last_name %>" required/>
-        <input type="text" name="phone_number" value="<%= client.phone_number %>" required/>
+        <br>
+        <input type="number" name="phone_number" value="<%= client.phone_number %>" min="0" max="999999999" required/>
+        <br>
         <input type="text" name="email" value="<%= client.email %>" required/>
+        <br>
         <input type="submit" value="Edit Client">
     </form>    
     <% } else { %>

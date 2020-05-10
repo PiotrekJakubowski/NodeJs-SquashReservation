@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+      <div class="table-wrapper">
+        <% if (court.length > 0) {%>
+        <table class="table table-hovered">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Type</th>
+              <th scope="col">Sector</th>
+              <th scope="col">Court Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% court.forEach((court, index) => { %>
+            <tr>
+              <th scope="row"><%= court.courtid %></th>
+              <td><%= court.type %></td>
+              <td><%= court.sector %></td>
+              <td>
+                <a href="/web/editCourt/<%= court.courtid %>"> Edit </a>
+                |
+                <a href="/web/deleteCourt/<%= court.courtid %>" onclick="return confirm('Are you sure you want to delete the court?');"> Delete </a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <hr>
+        <a href="/web/addCourt" title="Add a New Court">Add Court</a>
+        <% } else { %>
+        <p class="text-center">No courts found.</p>
+        <% } %>
+      </div>
+      <hr>
+      <a href="/web/clients">Go Back To Clients List</a>
+    </div>
+  </body>
+</html>

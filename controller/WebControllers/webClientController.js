@@ -1,7 +1,7 @@
 'use strict';
 console.log("webClientController.js file start");
 
-var Client = require('../model/clientModel.js');
+var Client = require('../../model/clientModel.js');
 
 exports.list_clients = function (req, res) {
     Client.getAllClients(function (err, client) {

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> </head>
+  
+  <head>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+  </head>
+
   <body>
     <div class="page-wrapper">
       <div class="table-wrapper">
@@ -13,6 +21,7 @@
               <th scope="col">Last Name</th>
               <th scope="col">Email</th>
               <th scope="col">Phone Number</th>
+              <th scope="col">Client Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -27,16 +36,17 @@
                 <a href="/web/editClient/<%= client.id %>" >Edit</a>
                 |
                 <a href="/web/deleteClient/<%= client.id %>" onclick="return confirm('Are you sure you want to delete the client?');">Delete</a>
-              </td>
-              <td>
-                -----> <a href="/web/clientReservations/<%= client.id %>">Show Client Reservation</a>
+                -----> 
+                <a href="/web/clientReservations/<%= client.id %>">Show Client Reservation</a>
               </td>
             </tr>
             <% }) %>
           </tbody>
         </table>
         <hr>
-        <a class="float-right" href="/web/addClient" title="Add a New Client">Add Client</a>
+        <a href="/web/addClient" title="Add a New Client">Add Client</a>
+        <br>
+        <a href="/web/courts" title="List Courts">Show Courts</a>
         <% } else { %>
         <p class="text-center">No client found.</p>
         <% } %>

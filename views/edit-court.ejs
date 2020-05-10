@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+  <body>
+    <% if (court) { %> 
+    <form method="post" action="">
+        <input type="text" name="type" value="<%= court.type %>" required/>
+        <br>
+        <input type="text" name="sector" value="<%= court.sector %>" required/>
+        <br>
+        <input type="submit" value="Edit Client">
+    </form>    
+    <% } else { %>
+    <p>Court Not Found. Go <a href="/web/addCourt">here</a> to add court.</p>
+    <% } %>
+    <hr>
+    <a href="/web/courts">Go Back To Court List</a>
+  </body>
+</html>
