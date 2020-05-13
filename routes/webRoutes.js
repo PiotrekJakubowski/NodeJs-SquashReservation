@@ -20,7 +20,13 @@ module.exports = function (app) {
         .get(webClientMethod.edit_client_page)
         .post(webClientMethod.edit_client);
 
+    app.route('/web/deleteAll')
+        .get(webClientMethod.delete_all_clients);
+
     //Reservation Methods
+    app.route('/web/deleteRandomReservation')
+        .get(webReservationMethod.delete_random_reservation);
+
     app.route('/web/clientReservations/:clientId')
         .get(webReservationMethod.list_reservations_for_client);
 

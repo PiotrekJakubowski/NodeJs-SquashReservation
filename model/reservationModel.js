@@ -127,4 +127,29 @@ Reservation.removeAllReservationsForClient = function (clientId, result) {
     });
 }
 
+Reservation.removeAllReservations = function (result) {
+
+    sql.query("DELETE FROM reservation", function (err, res) {
+
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+}
+
+Reservation.removeRandomReservation = function (result) {
+
+    sql.query("DELETE FROM reservation ORDER BY RAND() LIMIT 1", function (err, res) {
+
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+}
 module.exports = Reservation;

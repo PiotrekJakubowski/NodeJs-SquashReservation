@@ -43,14 +43,18 @@
             <% }) %>
           </tbody>
         </table>
-        <hr>
-        <a href="/web/addClient" title="Add a New Client">Add Client</a>
-        <hr>
-        <a href="/web/courts" title="List Courts">Show Courts</a>
         <% } else { %>
         <p class="text-center">No client found.</p>
         <% } %>
       </div>
+      <hr>
+        <a href="/web/addClient">Add Client</a>
+        <hr>
+        <a href="/web/courts"">Show Courts</a>
+        <hr>
+        <a href="/web/deleteAll">Delete All Clients</a>
+        <hr>
+        <a href="/web/deleteRandomReservation">Delete Random Reservation</a>
     </div>
   </body>
 </html>

@@ -64,13 +64,29 @@ exports.delete_client = function (req, res) {
 
     Reservation.removeAllReservationsForClient(clientId, function (err, results) {
         if (err)
-            console.log("We couldn't delete reservations for court: " + req.params.courtId);
+            console.log("We couldn't delete reservations for client: " + clientId);
         else
-            console.log("Reservations for court: " + req.params.courtId + " removed");
+            console.log("Reservations for client: " + clientId + " removed");
     });
-    
+
     console.log("WebController - Delete client with Id: " + clientId);
     Client.remove(clientId, function (err, result) {
         res.redirect('/web/clients');
     });
+};
+
+exports.delete_all_clients = function (req, res) {
+
+    Reservation.removeAllReservations(function (err) {
+        if (err)
+            console.log("We couldn't delete all reservations");
+        else
+            console.log("All reservations removed");
+    });
+
+    console.log("WebController - Delete All Clients");
+    Client.removeAll(function (err, result) {
+        res.redirect('/web/clients');
+    });
+
 };

@@ -6,7 +6,7 @@
     <form method="post" action="">
         <input type="number" min="1" name="court_id" value="<%= reservation.court_id %>" required/>
         <br>
-        <input type="text" name="reservation_date" value="<%= reservation.reservation_date %>" required/>
+        <input type="datetime-local" name="reservation_date" value="<%= reservation.reservation_date %>" required/>
         <br>
         <input type="text" name="client_id" value="<%= reservation.client_id %>" readonly/>
         <br>

@@ -76,4 +76,17 @@ Client.remove = function (id, result) {
     });
 };
 
+Client.removeAll = function(result) {
+    sql.query("DELETE FROM client", function (err, res) {
+
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+        } else {
+
+            result(null, res);
+        }
+    });
+}
+
 module.exports = Client;

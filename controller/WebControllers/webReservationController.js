@@ -70,4 +70,10 @@ exports.delete_reservation = function (req, res) {
     });
 };
 
+exports.delete_random_reservation = function (req, res) {
+    Reservation.removeRandomReservation(function (err, result) {
+        res.redirect('/web/clients/');
+    });
+};
+
 
