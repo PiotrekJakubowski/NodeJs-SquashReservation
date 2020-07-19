@@ -1,10 +1,8 @@
 'user strict';
 
-console.log("db.js file start");
 
 var mysql = require('mysql');
 
-//local mysql db connection
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'springstudent',
@@ -17,3 +15,4 @@ connection.connect(function (err) {
 });
 
 module.exports = connection;
+

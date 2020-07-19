@@ -6,7 +6,7 @@ module.exports = function (app) {
     var webCourtMethod = require('../controller/WebControllers/webCourtController');
 
     //Client Methods
-    app.route('/web/clients')
+    app.route('/web/clients/:pageSite')
         .get(webClientMethod.list_clients);
 
     app.route('/web/addClient')

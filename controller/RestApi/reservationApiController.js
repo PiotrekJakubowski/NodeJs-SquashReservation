@@ -1,25 +1,19 @@
 'use strict';
-console.log("reservationApiController.js file start");
 
 var Reservation = require('../../model/reservationModel.js');
 
 exports.list_all_reservations = function (req, res) {
     Reservation.getAllReservations(function (err, reservation) {
 
-        console.log('controller list all reservations');
         if (err)
             res.send(err);
-        //console.log('res', reservation);
         res.send(reservation);
     });
 };
 
 exports.createReservation = function (req, res) {
     var reservation = new Reservation(req.body);
-
-    console.log("Create Reservation request body: " + req.body.reservation_date + " | " + req.body.court + " | " + req.body.client_id);
-    console.log("Create Reservation client value: " + reservation.reservation_date + " | " + reservation.client_id)
-
+    
     //handles null error 
     if (!reservation.reservation_date || !reservation.client_id) {
 

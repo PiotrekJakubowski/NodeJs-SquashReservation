@@ -1,9 +1,6 @@
 'use strict';
 module.exports = function (app) {
-    console.log("appRoutes.js file start");
     var clientRestMethod = require('../controller/RestApi/clientApiController');
-    var reservationRestMethod = require('../controller/RestApi/reservationApiController');
-    var courtRestMethod = require('../controller/RestApi/courtApiController');
 
     //Clients
     app.route('/api/clients')
@@ -14,6 +11,10 @@ module.exports = function (app) {
         .get(clientRestMethod.read_a_client)
         .put(clientRestMethod.update_a_client)
         .delete(clientRestMethod.delete_a_client);
+
+    var reservationRestMethod = require('../controller/RestApi/reservationApiController');
+    var courtRestMethod = require('../controller/RestApi/courtApiController');
+
 
     //Reservations
     app.route('/api/reservations')

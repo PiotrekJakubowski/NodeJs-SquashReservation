@@ -6,6 +6,7 @@ const express = require('express'),
 port = process.env.PORT || 3000;
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs'); // configure template engine
+app.use(express.static(__dirname + "/public"));
 
 const mysql = require('mysql');
 // connection configurations

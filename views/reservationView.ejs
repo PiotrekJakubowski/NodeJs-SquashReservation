@@ -10,17 +10,17 @@
   </head>
 
   <body>
-    <div class="page-wrapper">
-      <div class="table-wrapper">
+    <div>
+      <div>
         <% if (reservation.length > 0) {%>
-        <table class="table table-hovered">
-          <thead class="thead-dark">
+        <table>
+          <thead>
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Court</th>
-              <th scope="col">Date</th>
-              <th scope="col">Client ID</th>
-              <th scope="col">Reservation Actions</th>
+              <th>ID</th>
+              <th>Court</th>
+              <th>Date</th>
+              <th>Client ID</th>
+              <th>Reservation Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -39,15 +39,22 @@
             <% }) %>
           </tbody>
         </table>
+        <div class="pagination">
+          <a href="#">&laquo;</a>
+          <% for(var i = 1; i <= reservationsAmount; i++) { %>
+          <a href="<%= i %>"><%= i %></a>
+          <% } %>
+          <a href="#">&raquo;</a>
+        </div>
         <hr>
         <% } else { %>
-        <p class="text-center">No reservation found.</p>
+        <p>No reservation found.</p>
         <% } %>
       </div>
       <hr>
-      <a class="float-right" href="/web/addReservation/<%= clientId %>" title="Add a New Reservation">Add Reservation</a>
+      <a href="/web/addReservation/<%= clientId %>" >Add Reservation</a>
       <hr>
-      <a href="/web/clients">Go Back To Clients List</a>
+      <a href="/web/clients/1">Go Back To Clients List</a>
     </div>
   </body>
 </html>
