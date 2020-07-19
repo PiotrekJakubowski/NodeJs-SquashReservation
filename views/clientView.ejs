@@ -2,18 +2,27 @@
 <html lang="en">
 
 <head>
-  <style>
-    table,
-    th,
-    td {
-      border: 1px solid black;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/client.css" type="text/css" />
 </head>
 
 <body>
-  <div>
-    <div>
+  <div class="container">
+
+    <div class="navbar">
+      <a href="/web/addClient">Add Client</a>
+      <a href="/web/courts">Show Courts</a>
+      <div class="dropdown">
+        <button class="dropbtn">External Methods
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/web/deleteAll">Delete All Clients</a>
+          <a href="/web/deleteRandomReservation">Delete Random Reservation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="clientsTable">
       <% if (client.length > 0) {%>
       <table>
         <thead>
@@ -57,14 +66,6 @@
       <p>No client found.</p>
       <% } %>
     </div>
-    <hr>
-    <a href="/web/addClient">Add Client</a>
-    <hr>
-    <a href="/web/courts">Show Courts</a>
-    <hr>
-    <a href="/web/deleteAll">Delete All Clients</a>
-    <hr>
-    <a href="/web/deleteRandomReservation">Delete Random Reservation</a>
   </div>
 </body>
 

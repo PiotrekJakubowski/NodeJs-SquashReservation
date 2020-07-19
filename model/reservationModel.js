@@ -1,31 +1,11 @@
 'user strict';
 var sql = require('./db.js');
 
-//Task object constructor
 var Reservation = function (reservation) {
     this.reservation_date = reservation.reservation_date;
     this.court_id = reservation.court_id;
     this.client_id = reservation.client_id;
 };
-
-// Client.getAllClients = function (pageSite, result) {
-//     let numPageSite = Math.floor(Number(pageSite) / 10);;
-
-//     if (pageSite > 1) {
-//         console.log("If statement");
-//         numPageSite = (Math.floor(Number(pageSite) / 10) + 1) * 10;
-//     }
-
-//     let getAllClientsQuery = "SELECT * FROM client LIMIT 10 OFFSET " + String(numPageSite);
-//     console.log("Query: " + getAllClientsQuery)
-//     sql.query(getAllClientsQuery, function (err, res) {
-//         if (err) {
-//             result(null, err);
-//         } else {
-//             result(null, res);
-//         }
-//     });
-// };
 
 Reservation.getNumberOfClientReservations = function (clientId, result) {
     sql.query("SELECT count(*) AS count FROM reservation WHERE client_id = ?", clientId, function (err, res) {
@@ -37,15 +17,8 @@ Reservation.getNumberOfClientReservations = function (clientId, result) {
     });
 }
 
-Reservation.getAllReservationsForClient = function (pageSite, clientId, result) {
-    let numPageSite = Math.floor(Number(pageSite) / 10);;
-
-    if (pageSite > 1) {
-        console.log("If statement");
-        numPageSite = (Math.floor(Number(pageSite) / 10) + 1) * 10;
-    }
-
-    sql.query("Select * from reservation where client_id = ? LIMIT 10 OFFSET ?", [clientId, String(numPageSite)], function (err, res) {
+Reservation.getAllReservationsForClient = function (clientId, result) {
+    sql.query("Select * from reservation where client_id = ?", clientId, function (err, res) {
         if (err) {
             result(err, null);
         } else {

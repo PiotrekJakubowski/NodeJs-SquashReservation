@@ -6,12 +6,13 @@ var Reservation = require('../../model/reservationModel');
 exports.list_reservations_for_client = function (req, res) {
     let clientId = req.params.clientId;
 
-    Reservation.getAllReservationsForClient(req.params.clientId, function(err, reservation) {
+    Reservation.getAllReservationsForClient(req.params.clientId, function (err, reservation) {
         if (err)
             res.send(err);
         res.render('reservationView', {
             reservation: reservation,
-            clientId: clientId
+            clientId: clientId,
+            reservationsAmount: reservation
         });
     });
 };
@@ -67,5 +68,3 @@ exports.delete_random_reservation = function (req, res) {
         res.redirect('/web/clients/1');
     });
 };
-
-

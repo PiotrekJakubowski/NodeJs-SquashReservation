@@ -41,9 +41,6 @@
         </table>
         <div class="pagination">
           <a href="#">&laquo;</a>
-          <% for(var i = 1; i <= reservationsAmount; i++) { %>
-          <a href="<%= i %>"><%= i %></a>
-          <% } %>
           <a href="#">&raquo;</a>
         </div>
         <hr>
@@ -54,7 +51,7 @@
       <hr>
       <a href="/web/addReservation/<%= clientId %>" >Add Reservation</a>
       <hr>
-      <a href="/web/clients/1">Go Back To Clients List</a>
+      <a href="/web/clients/1">Clients List</a>
     </div>
   </body>
 </html>
