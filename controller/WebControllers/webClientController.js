@@ -7,12 +7,13 @@ exports.list_clients = function (req, res) {
     let pageSite = req.params.pageSite;
     console.log("PageSite: " + pageSite);
     let clientsCounts;
+
     Client.getNumberOfClients(function(err, clientsAmount) {
         if (err)
             res.send(err);
         else {
             console.log("Clients counts list_clients = " + clientsAmount[0].count);
-            clientsCounts = Math.floor(clientsAmount[0].count/10 + 1);
+            clientsCounts = Math.floor(clientsAmount[0].count/10);
         }
     })
 

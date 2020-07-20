@@ -13,8 +13,8 @@ Client.getAllClients = function (pageSite, result) {
     let numPageSite = Math.floor(Number(pageSite) / 10);;
 
     if (pageSite > 1) {
-        console.log("If statement");
-        numPageSite = (Math.floor(Number(pageSite) / 10) + 1) * 10;
+        numPageSite = (pageSite * 10) - 10;
+        console.log("If statement numPageSite: " + numPageSite);
     }
 
     let getAllClientsQuery = "SELECT * FROM client LIMIT 10 OFFSET " + String(numPageSite);
@@ -29,7 +29,6 @@ Client.getAllClients = function (pageSite, result) {
 };
 
 Client.getNumberOfClients = function (result) {
-    let clientsCounts;
     sql.query("SELECT count(*) AS count FROM client", function (err, res) {
         if (err) {
             result(null, err);

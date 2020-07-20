@@ -16,8 +16,8 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="/web/deleteAll">Delete All Clients</a>
-          <a href="/web/deleteRandomReservation">Delete Random Reservation</a>
+          <a href="/web/deleteAll" onclick="return confirm('Are you sure you want to delete all clients?');">Delete All Clients</a>
+          <a href="/web/deleteRandomReservation" onclick="return confirm('Are you sure you want to delete random reservation?');">Delete Random Reservation</a>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@
         </tbody>
       </table>
       <div class="pagination">
-        <a href="#">&laquo;</a>
+        <a href="#" tabindex="number">&laquo;</a>
         <% for(var i = 1; i <= clientsAmount; i++) { %>
         <a href="<%= i %>"><%= i %></a>
         <% } %>
